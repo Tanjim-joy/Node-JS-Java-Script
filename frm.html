@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="./style/style.css">
+
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(() => {
+
+            $("#frm").submit(function (e) {
+                e.preventDefault();
+                if (!validate()) return;
+
+                var data = new FormData(this);
+                console.log(data);
+                $.ajax({
+                    url: '/submit',
+                    type: "POST",
+                    data: data,
+
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                })
+                    .done(r => {
+                        console.log(r);
+                        var output = `<h5 >Your data</h5>
+                                                             <div id="p">
+                                                                  <img class='thumb' src='${r.p}' />
+                                                             </div>
+                                                             <div>
+                                                                  Name: ${r.n}<br />
+                                                                  City: ${r.c}<br />
+                                                                  DOB: ${r.d}<br />
+                                                                  DOT: ${r.t}<br />
+                                                             </div>`;
+
+                        $('#m').html(output).show();
+                    })
+                    .fail(err => {
+                        console.log(err);
+                    });
+            });
+        });
+        function validate() {
+            var valid = true;
+            var errMsg = "<h5>Some fields have error in the form</h5>";
+            if ($("#name").val() == "") {
+                valid = false;
+                errMsg += "Name field is required.<br>"
+            }
+            if ($("#city").val() == "") {
+                valid = false;
+                errMsg += "City field is required.<br>"
+            }
+            if ($("#dob").val() == "") {
+                valid = false;
+                errMsg += "Bith date field is required.<br>"
+            } else if (!$("#dob").val().match(/^\d{4}-([0-1]?[0-2]|[0-9])-\d{1,2}$/)) {
+                valid = false;
+                errMsg += "Birth date invalid.<br>"
+            }
+
+            if ($("#tob").val() == "") {
+                valid = false;
+                errMsg += "Birth time field is required.<br>"
+            } else if (!$("#tob").val().match(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/)) {
+                valid = false;
+                errMsg += "Birth time invalid.<br>"
+            }
+
+            if ($("#pic").val() == "") {
+                valid = false;
+                errMsg += "Picture field is required.<br>"
+            } else if (/\.(jpg|jpeg|png|gif)$/i.test($('#pic').val()) == false) {
+                valid = false;
+                errMsg += "Picture can be jpg, png or gff.<br>"
+            }
+
+            if (!valid) {
+                $("#error").html(errMsg).show();
+            }
+            else $("#error").html("").hide();
+            return valid;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <p class="m-itm"><a href="#" class="logo">Final Exam 03</a></p>
+        <nav class="navbar">
+            <ul class="menu">  
+                <li class="m-itm"><a href="Index.html" class="li">Home</a></li>
+                <li class="m-itm"><a href="frm.html"class="li">Form</a></li>
+                <li class="m-itm"><a href="JS_Pattern .html"class="li">Task02</a></li>
+            </ul>
+        </nav>
+        <p class="m-itm"><a href="#" class="l">Contact</a></p>
+    </header>
+
+    <fieldset>
+    <legend> <strong> Submit your info </strong></legend>
+        <div class="container main">
+          <form class="frm" id="frm" method="POST" action="/submit" enctype="multipart/form-data" novalidate>
+                 <div class="fld">
+                      <label class="lbl">Full Name</label>
+                      <input
+                           type="text"
+                           name="name"
+                           id="name"
+                           class="ctrl"
+                           placeholder="Enter Your Name"
+                           required
+                      />
+                 </div>
+                 <div class="fld">
+                      <label class="lbl">Division</label>
+                      <select name="Division" id="Division" class="ctrl" required>
+                           <option value="Dhaka">Dhaka</option>
+                           <option value="Rajshahi">Rajshahi</option>
+                           <option value="Chittagong">Chittagong</option>
+                           <option value="Barishal">Barishal</option>
+                           <option value="Khulna">Khulna</option>
+                           <option value="Mymensingh">Mymensingh</option>
+                           <option value="Rangpur">Rangpur</option>
+                           <option value="Sylhet">Sylhet</option>
+                           <option value="" selected>Select Your Division</option>
+                      </select>
+                 </div>
+                 <div class="fld">
+                      <label class="lbl">Birth Date</label>
+                      <input
+                           type="text"
+                           name="bd"
+                           id="bd"
+                           class="ctrl"
+                           required
+                      />
+                 </div>
+                
+                 <div class="fld">
+                      <label class="lbl">Picture</label>
+                      <input
+                           type="file"
+                           name="img"
+                           id="img"
+                           class="ctrl"
+                           required
+                      />
+                 </div>
+                 <div class="fld">
+                      <label class="lbl">Message</label>
+                      <input 
+                         type="text"
+                         name="msg"
+                         id="msg"
+                         class="ctrl"
+                         placeholder="Write Your Message"
+                         style="height:80px"
+                      
+                      >
+                 </div>
+                 <div class="fld">
+                    <label class="lbl"></label>
+                    <button type="submit" id="submit" class="btn success">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    
+</fieldset>
+    <div> input your data</div>
+    <div class="container main" style="padding-left: 15px; ">
+        <div id="error" style="display: none;">
+        </div>
+        <div id="msg" style="display: none;">
+   
+    </div>
+        
+
+
+    
+<div class="footer">
+    <p>Md. Tangimul Haque</p>
+  </div>
+</body>
+</html>

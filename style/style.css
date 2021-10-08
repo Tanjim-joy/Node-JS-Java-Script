@@ -1,0 +1,186 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(3, 0, 0);
+}
+p,
+li,
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eb5b5f;
+  border-bottom: 3px solid #06f025e5 !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+}
+.logo {
+  font-weight: 700;
+  font-size: 22px;
+  padding: 10px 20px;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+}
+.menu li {
+  list-style: none;
+  display: inline-block;
+}
+.menu li a {
+  margin: 0 20px;
+}
+.menu li a:hover {
+  color: yellow;
+}
+.card:hover {
+  background-color: rgb(151, 228, 205);
+  cursor: pointer;
+}
+.l {
+  padding: 10px 25px;
+}
+.container {
+  width: 97.5%;
+  margin-top: 50px;
+  color: #eb5b5f;
+}
+.main {
+  min-height: 20px;
+}
+.card {
+  background-color: rgb(92, 223, 125);
+  border-radius: 0.4rem;
+  margin: 25px 30px;
+  padding: 1.5rem;
+}
+.card p {
+  margin-top: 10px;
+  color: royalblue;
+  justify-content: center;
+}
+/*
+form
+*/
+.frm {
+  margin-top: 25px;
+}
+.fld {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+}
+.lbl {
+  width: 150px;
+  text-align: left;
+  margin-right: 5rem;
+  margin-left: 30px;
+}
+.ctrl {
+  width: 660px;
+  padding: 0.25rem;
+  border: solid 1px #ccc;
+  border-radius: 0.375rem;
+  resize: vertical;
+}
+.ctrl[type="file"] {
+  width: 350px;
+  padding: 0;
+  border: solid 1px #ccc;
+  border-radius: 0.375rem;
+}
+.ctrl::file-selector-button {
+  padding: 0.375rem 0.75rem;
+
+  border-radius: 0.375rem 0 0 0.375rem;
+  background-color: #e9ecef;
+  border-width: 0;
+}
+.btn {
+  font-weight: 400;
+  background-color: #e9ecef;
+  padding: 0.375rem 1rem;
+  border: solid 1px #ccc;
+  border-radius: 0.25rem;
+}
+.success {
+  background-color: rgb(23, 150, 224);
+  color: white;
+}
+fieldset {
+  color: #f17474;
+  padding: 0px 10px;
+  background-color: rgb(36, 34, 34);
+  margin: 50px 15px;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(212, 96, 96);
+  color: white;
+  text-align: center;
+  border-top: 3px solid #06f025e5 !important;
+}
+.thumb {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+#mesage {
+  display: flex;
+
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border: solid 1px #ccc;
+  margin: 15px;
+  border-radius: 0.5rem;
+}
+#mesage h5 {
+  width: 100%;
+}
+#p {
+  width: 120px;
+  padding: 5px;
+}
+.btn:hover {
+  color: rgb(103, 151, 241);
+  cursor: pointer;
+  background-color: rgb(84, 194, 121);
+}
+#eror {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border: solid 1px #ccc;
+  margin: 15px;
+  border-radius: 0.5rem;
+  padding: 15px;
+  color: red;
+}
+#eror h4 {
+  width: 100%;
+}
+.bg {
+  width: 97.5%;
+  margin-top: 50px;
+  color: #5b71eb;
+}
+
+/* jS Pattern syl... */
+/* #d1,
+#d2,
+#d3,
+#d4,
+:hover {
+  background-color: rgb(30, 37, 19);
+} */

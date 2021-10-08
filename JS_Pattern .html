@@ -1,0 +1,123 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Pattern</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <!-- Header started -->
+    <header>
+        <p class="m-itm"><a href="#" class="logo">Final Exam 03</a></p>
+        <nav class="navbar">
+            <ul class="menu">  
+                <li class="m-itm"><a href="Index.html" class="li">Home</a></li>
+                <li class="m-itm"><a href="frm.html"class="li">Form</a></li>
+                <li class="m-itm"><a href="JS_Pattern .html"class="li">Task02</a></li>
+            </ul>
+        </nav>
+        <p class="m-itm"><a href="#" class="l">Contact</a></p>
+    </header>
+
+
+
+    <div class="container main">
+        <fieldset id="d1">
+             <legend><STrong>Literal Pattern object</STrong></legend>
+        </fieldset>
+        <fieldset id="d2">
+             <legend> <STrong>Constructor Pattern object</STrong></legend> <STrong></STrong> 
+        </fieldset>
+        <fieldset id="d3">
+             <legend><STrong>Factory Pattern object</STrong></legend>
+             <div >
+
+             </div>
+        </fieldset>
+        <fieldset >
+            <legend><STrong>Inheritance</STrong></legend>
+            <div id="d4" style="text-align: center;">
+
+            </div>
+         
+        </fieldset>
+   </div>
+
+   
+   <script>
+        var emp = { id: 1, name: "Emp 01", salary: 9000.0 };
+        function Employee(id, name, salary) {
+             this.id = id;
+             this.name = name;
+             this.salary = salary;
+        }
+        Employee.prototype.info = function () {
+             return `Emp. Id: ${this.id}<br>
+                   Emp. Name: ${this.name}<br />
+                   Salary: ${this.salary}`;
+        };
+        function createEmployee(id, name, salary) {
+             var obj = {};
+             obj.id = id;
+             obj.name = name;
+             obj.salary = salary;
+             obj.info = function () {
+                  return `Emp. Id: ${this.id}<br>
+                     Emp. Name: ${this.name}<br />
+                     Salary: ${this.salary}`;
+             };
+             return obj;
+        }
+        function Person(name) {
+             this.name = name;
+        }
+        Person.prototype.info = function () {
+             return `${this.name}`;
+        };
+        Person.prototype = new Person(); //to intact prototype chain
+        function Trainee(name, course) {
+             Person.call(this, name);
+             this.course = course;
+        }
+        Trainee.prototype.info = function () {
+             return `${this.name} ${this.course}`;
+        };
+        document.getElementById(
+             "d1"
+        ).innerHTML += `Emp. Id: ${emp.id}<br>
+                                                     Emp. Name: ${emp.name}<br />
+                                                     Salary: ${emp.salary}`;
+        var emp1 = new Employee(1, "Emp 2", 20000.0);
+        var emp2 = createEmployee(3, "Emp 3", 20000.0);
+
+        var p1 = new Person('P1');
+         var t1 = new Trainee('P2', 'C#');
+        document.getElementById("d2").innerHTML += emp1.info();
+        document.getElementById("d3").innerHTML += emp2.info();
+        document.getElementById("d4").innerHTML += p1.info();
+        document.getElementById("d4").innerHTML += "<br />";
+        document.getElementById("d4").innerHTML += t1.info();
+   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer page Started -->
+    <div class="footer">
+        <p>Md. Tangimul Haque</p>
+      </div>
+</body>
+</html>
